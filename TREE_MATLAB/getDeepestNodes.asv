@@ -1,0 +1,11 @@
+function nodes = getDeepestNodes(tree)
+    if length(tree.kids{1,1}.kids) && tree.kids{1,2}.class
+        nodes = [tree];
+    elseif tree.class
+        nodes = [];
+    else
+        nodesl = getDeepestNodes(tree.kids{1,1});
+        nodesr = getDeepestNoeds(tree.kids{1,2});
+        nodes = [nodesl, nodesr];
+    end
+end
